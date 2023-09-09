@@ -1,6 +1,6 @@
 export interface DefaultCommandOptions {
   host: string;
-  port: string;
+  port: number;
   user?: string;
   password?: string;
   db?: string;

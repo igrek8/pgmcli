@@ -16,7 +16,7 @@ export function attachDefaultOptions(cmd: Command, config?: Config) {
     .requiredOption("--host <string>", "postgres host", config?.host ?? DEFAULT_HOST)
     .requiredOption("--port <number>", "postgers port", parseInt, config?.port ?? DEFAULT_PORT)
     .option("-u, --user <string>", "postgres user", config?.user ?? DEFAULT_USER)
-    .option("-p, --password <string>", "postgers password")
+    .option("-p, --password <string>", "postgers password", config?.password)
     .option("--db <name>", "database name", config?.db)
     .requiredOption("--dir <name>", "migrations directory", config?.dir ?? DEFAULT_DIR)
     .requiredOption("--table <name>", "migrations table", config?.table ?? DEFAULT_TABLE)

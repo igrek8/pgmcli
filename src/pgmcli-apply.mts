@@ -41,7 +41,7 @@ attachDefaultOptions(program, config)
     const db = new pg.Client({
       ...config?.client,
       host: options.host,
-      port: Number.parseInt(options.port),
+      port: options.port,
       database: options.db,
       user: options.user,
       password: options.password,
