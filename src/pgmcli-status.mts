@@ -40,7 +40,6 @@ attachDefaultOptions(program, config)
         if (meta) message += ` ${JSON.stringify(meta)}`;
         console.info(message);
       });
-      await client.query("COMMIT");
     } finally {
       await client.query("ROLLBACK");
       await client.end();

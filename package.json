@@ -3,7 +3,7 @@
   "description": "Apply or revert migrations for PostgreSQL",
   "author": "7078731+igrek8@users.noreply.github.com",
   "license": "MIT",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "keywords": [
     "postgres",
