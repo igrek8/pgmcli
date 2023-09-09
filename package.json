@@ -1,0 +1,50 @@
+{
+  "name": "pgmcli",
+  "description": "Apply or revert migrations for PostgreSQL",
+  "author": "7078731+igrek8@users.noreply.github.com",
+  "license": "MIT",
+  "version": "0.0.5",
+  "type": "module",
+  "keywords": [
+    "postgres",
+    "migrations",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/igrek8/pgmcli"
+  },
+  "bugs": {
+    "url": "https://github.com/igrek8/pgmcli/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": "./dist/pgmcli.mjs",
+  "files": [
+    "./dist",
+    "./schema.json"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "ajv": "^8",
+    "commander": "^11",
+    "pg": "^8"
+  },
+  "devDependencies": {
+    "@types/pg": "8.10.2",
+    "ajv": "8.12.0",
+    "commander": "11.0.0",
+    "pg": "8.11.3",
+    "prettier": "3.0.3",
+    "typescript": "5.2.2",
+    "vitest": "0.34.3"
+  }
+}

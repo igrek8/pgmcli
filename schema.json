@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Config for pgmcli",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "host": {
+      "description": "PostgreSQL server host",
+      "type": "string"
+    },
+    "port": {
+      "description": "PostgreSQL server port",
+      "type": "integer"
+    },
+    "user": {
+      "description": "PostgreSQL user",
+      "type": "string"
+    },
+    "password": {
+      "description": "PostgreSQL password",
+      "type": "string"
+    },
+    "db": {
+      "description": "PostgreSQL database",
+      "type": "string"
+    },
+    "dir": {
+      "description": "Migrations directory",
+      "type": "string"
+    },
+    "table": {
+      "description": "Table to store state",
+      "type": "string"
+    },
+    "tag": {
+      "description": "Tag to separate apply and revert blocks when using an SQL file",
+      "type": "string"
+    },
+    "logLevel": {
+      "enum": ["DEBUG", "LOG", "INFO", "NOTICE", "WARNING", "ERROR"]
+    },
+    "client": {
+      "description": "Options to pass to pg client",
+      "type": "object"
+    }
+  }
+}
