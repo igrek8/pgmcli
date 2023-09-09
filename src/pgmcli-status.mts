@@ -27,21 +27,26 @@ attachDefaultOptions(program, config)
     const table = client.escapeIdentifier(options.table);
     try {
       await client.connect();
-      await client.query("BEGIN");
-      await client.query(`LOCK TABLE ${table} IN EXCLUSIVE MODE`);
-      const [applied, migrations] = await Promise.all([
-        getAppliedMigrations(client, table),
-        getMigrations(resolve(options.dir)),
-      ]);
-      migrations.forEach(({ id }) => {
-        const status = applied.has(id) ? "applied" : "pending";
-        const meta = applied.get(id)?.meta;
-        let message = `${status}: ${id}`;
-        if (meta) message += ` ${JSON.stringify(meta)}`;
-        console.info(message);
-      });
+      try {
+        await client.query("BEGIN");
+        await client.query(`LOCK TABLE ${table} IN EXCLUSIVE MODE`);
+        const [applied, migrations] = await Promise.all([
+          getAppliedMigrations(client, table),
+          getMigrations(resolve(options.dir)),
+        ]);
+        migrations.forEach(({ id }) => {
+          const status = applied.has(id) ? "applied" : "pending";
+          const meta = applied.get(id)?.meta;
+          let message = `${status}: ${id}`;
+          if (meta) message += ` ${JSON.stringify(meta)}`;
+          console.info(message);
+        });
+        await client.query("COMMIT");
+      } catch (e) {
+        await client.query("ROLLBACK");
+        throw e;
+      }
     } finally {
-      await client.query("ROLLBACK");
       await client.end();
     }
   })

@@ -36,7 +36,8 @@ attachDefaultOptions(program, config)
       await client.connect();
       await client.query(sql.replace("<table>", table));
       await mkdir(options.dir, { recursive: true });
-      if (!(await checkFileExists(options.config))) await createConfigFile(options.config);
+      const hasConfig = await checkFileExists(options.config);
+      if (!hasConfig) await createConfigFile(options.config);
     } finally {
       await client.end();
     }
