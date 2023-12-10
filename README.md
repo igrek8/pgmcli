@@ -1,5 +1,7 @@
 # PostgreSQL Migrator
 
+[![codecov](https://codecov.io/gh/igrek8/pgmcli/graph/badge.svg?token=4TH5JD43AO)](https://codecov.io/gh/igrek8/pgmcli)
+
 Apply or revert migrations for PostgreSQL.
 
 - [PostgreSQL Migrator](#postgresql-migrator)

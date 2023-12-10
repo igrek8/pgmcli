@@ -1,6 +1,6 @@
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
-import { readJSONFile } from "./read-json-file.mjs";
+import { readJSONFile } from "./read-json-file.js";
 
 const __filename = fileURLToPath(import.meta.url);
 

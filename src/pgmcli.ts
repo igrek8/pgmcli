@@ -2,8 +2,7 @@
 
 import { program } from "commander";
 
-import "./core/polyfills.mjs";
-import { pkg } from "./core/pkg-info.mjs";
+import { pkg } from "./core/pkg-info.js";
 
 program
   .name(pkg.name)

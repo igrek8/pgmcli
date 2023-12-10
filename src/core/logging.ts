@@ -16,12 +16,18 @@ export enum ServerSeverity {
   EXCEPTION = "EXCEPTION",
 }
 
-export function getChannel(severity?: string): "stdout" | "stderr" {
+export function getConsoleLevel(severity?: string): "debug" | "log" | "info" | "warn" | "error" {
   switch (severity) {
     case ServerSeverity.EXCEPTION:
-      return "stderr";
+      return "error";
+    case ServerSeverity.WARNING:
+      return "warn";
+    case ServerSeverity.INFO:
+      return "info";
+    case ServerSeverity.DEBUG:
+      return "debug";
     default:
-      return "stdout";
+      return "log";
   }
 }
 

@@ -1,6 +1,6 @@
 import { Command } from "commander";
 
-import { Config } from "./config.interface.mjs";
+import { Config } from "./config.interface.js";
 import {
   DEFAULT_TABLE,
   DEFAULT_DIR,
@@ -8,8 +8,8 @@ import {
   DEFAULT_HOST,
   DEFAULT_PORT,
   DEFAULT_USER,
-} from "./constants.mjs";
-import { parseInt } from "./parse-int.mjs";
+} from "./constants.js";
+import { parseInt } from "./parse-int.js";
 
 export function attachDefaultOptions(cmd: Command, config?: Config) {
   return cmd

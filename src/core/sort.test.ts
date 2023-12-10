@@ -1,6 +1,6 @@
 import { test, expect, describe } from "vitest";
-import { sort } from "./sort.mjs";
-import { Migration } from "./migration.interface.mjs";
+import { sort } from "./sort.js";
+import { Migration } from "./migration.interface.js";
 
 describe("sort", () => {
   test("sort with id", () => {

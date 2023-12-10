@@ -2,8 +2,8 @@ import { dirname } from "path";
 import { mkdir, writeFile } from "fs/promises";
 import { URL } from "url";
 
-import { pkg } from "./pkg-info.mjs";
-import { Config } from "./config.interface.mjs";
+import { pkg } from "./pkg-info.js";
+import { Config } from "./config.interface.js";
 import {
   DEFAULT_HOST,
   DEFAULT_DIR,
@@ -12,7 +12,7 @@ import {
   DEFAULT_PORT,
   DEFAULT_TAG,
   DEFAULT_LOG_LEVEL,
-} from "./constants.mjs";
+} from "./constants.js";
 
 const url = new URL(pkg.repository.url);
 url.pathname += `/raw/v${pkg.version}/schema.json`;

@@ -1,4 +1,4 @@
-import { Migration } from "./migration.interface.mjs";
+import { Migration } from "./migration.interface.js";
 
 export function sort(a: Migration, b: Migration) {
   if (a.created_at < b.created_at) {

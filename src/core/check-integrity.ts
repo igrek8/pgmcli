@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
 
-import { Migration } from "./migration.interface.mjs";
+import { Migration } from "./migration.interface.js";
 
 export interface CheckIntegrityOptions {
   applied: Map<string, Migration>;

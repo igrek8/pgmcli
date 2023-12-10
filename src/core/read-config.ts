@@ -1,6 +1,6 @@
-import { Config } from "./config.interface.mjs";
-import { isValidConfig } from "./is-valid-config.mjs";
-import { readJSONFile } from "./read-json-file.mjs";
+import { Config } from "./config.interface.js";
+import { isValidConfig } from "./is-valid-config.js";
+import { readJSONFile } from "./read-json-file.js";
 
 export async function readConfig(configPath: string): Promise<Config> {
   const config = await readJSONFile(configPath);

@@ -1,7 +1,7 @@
 import pg from "pg";
 import { strict as assert } from "assert";
-import { Migration } from "./migration.interface.mjs";
-import { sort } from "./sort.mjs";
+import { Migration } from "./migration.interface.js";
+import { sort } from "./sort.js";
 
 export async function getAppliedMigrations(client: pg.Client, table: string) {
   return new Map<string, Migration>(
