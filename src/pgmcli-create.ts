@@ -15,7 +15,7 @@ program
   .requiredOption("--name <name>", `migration file name (${extensions})`)
   .option("--plan", "show plan")
   .requiredOption("--dir <name>", "migrations directory", config?.dir ?? DEFAULT_DIR)
-  .requiredOption("--revert-tag <tag>", "tag where revert block begins", config?.tag ?? DEFAULT_TAG)
+  .requiredOption("--tag <tag>", "tag where revert block begins", config?.tag ?? DEFAULT_TAG)
   .option("--config <path>", "config path")
   .action(create)
   .parse();
