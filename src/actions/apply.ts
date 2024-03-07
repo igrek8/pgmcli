@@ -40,7 +40,7 @@ export async function apply(options: ApplyOptions, config?: Config) {
       try {
         await db.query("BEGIN");
         await db.query(`SET client_min_messages TO ${severity}`);
-        await db.query(`LOCK TABLE ${table} IN EXCLUSIVE MODE`);
+        await db.query(`LOCK TABLE ${table} IN ACCESS EXCLUSIVE MODE`);
         const applied = await getAppliedMigrations(db, table);
         checkIntegrity({ applied, migrations });
         if (applied.has(migration.id)) {
@@ -61,8 +61,8 @@ export async function apply(options: ApplyOptions, config?: Config) {
               await db.query(up);
             }
           } else {
-            const { up } = await import(filePath);
-            await up?.(db, { logLevel: options.logLevel });
+            const mod = await import(filePath);
+            await (mod.up ?? mod.default.up)?.(db, { logLevel: options.logLevel });
           }
           const row = [migration.id, options.meta];
           await db.query(`INSERT INTO ${table} VALUES ($1, $2)`, row);

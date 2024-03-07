@@ -39,8 +39,8 @@ export async function revert(options: RevertOptions, config?: Config) {
     for (const migration of Array.from(migrations.values()).reverse()) {
       try {
         await db.query("BEGIN");
-        await db.query(`LOCK TABLE ${table} IN EXCLUSIVE MODE`);
         await db.query(`SET client_min_messages TO ${severity}`);
+        await db.query(`LOCK TABLE ${table} IN ACCESS EXCLUSIVE MODE`);
         const applied = await getAppliedMigrations(db, table);
         checkIntegrity({ applied, migrations });
         if (!applied.has(migration.id)) {
@@ -61,8 +61,8 @@ export async function revert(options: RevertOptions, config?: Config) {
               await db.query(down);
             }
           } else {
-            const { down } = await import(filePath);
-            await down?.(db, { logLevel: options.logLevel });
+            const module = await import(filePath);
+            await (module.down ?? module.default.down)?.(db, { logLevel: options.logLevel });
           }
           await db.query(`DELETE FROM ${table} WHERE id = $1`, [migration.id]);
         }

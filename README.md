@@ -82,7 +82,7 @@ Options:
   --name <name>       migration file name (.ts, .js, .cjs, .mjs, .mts, .sql)
   --plan              show plan
   --dir <name>        migrations directory (default: "migrations")
-  --revert-tag <tag>  tag where revert block begins (default: "REVERT BEGIN")
+  --tag <tag>         tag where revert block begins (default: "REVERT BEGIN")
   --config <path>     config path
   -h, --help          display help for command
 ```

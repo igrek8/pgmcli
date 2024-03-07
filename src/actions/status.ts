@@ -22,7 +22,7 @@ export async function status(options: StatusOptions, config?: Config) {
     await client.connect();
     try {
       await client.query("BEGIN");
-      await client.query(`LOCK TABLE ${table} IN EXCLUSIVE MODE`);
+      await client.query(`LOCK TABLE ${table} IN ACCESS EXCLUSIVE MODE`);
       const [applied, migrations] = await Promise.all([
         getAppliedMigrations(client, table),
         getMigrations(resolve(options.dir)),
